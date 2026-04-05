@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chaitra P. Madarakhandi — Automotive Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181b22;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8eaf0;
+    --muted: #7a7f8e;
+    --accent: #4fc3f7;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --warm: #fbbf24;
+    --red: #f87171;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(10,12,16,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2.5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,195,247,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,195,247,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,195,247,0.08) 0%, transparent 70%);
+    top: 10%; left: -10%;
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(167,139,250,0.07) 0%, transparent 70%);
+    bottom: 10%; right: -5%;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    background: rgba(79,195,247,0.08);
+    border: 1px solid rgba(79,195,247,0.2);
+    padding: 6px 14px;
+    border-radius: 99px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--mono);
+    font-size: clamp(13px, 2vw, 16px);
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-desc {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s ease 0.3s both;
+    font-weight: 300;
+  }
+
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: var(--sans);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0c10;
+  }
+
+  .btn-primary:hover {
+    background: #81d4fa;
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+
+  .btn-ghost:hover {
+    background: var(--surface2);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.6s ease 0.5s both;
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    padding: 6rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border2), transparent);
+    margin: 0 auto;
+  }
+
+  /* ─── EXPERTISE CARDS ─── */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .expertise-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expertise-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--card-color, var(--accent)), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .expertise-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-4px);
+  }
+
+  .expertise-card:hover::before { opacity: 1; }
+
+  .card-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 99px;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+  }
+
+  /* ─── RTOS VISUAL ─── */
+  .rtos-section { background: var(--surface); border-radius: 16px; padding: 2.5rem; margin: 3rem 0; border: 1px solid var(--border); }
+
+  .rtos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  @media (max-width: 680px) { .rtos-grid { grid-template-columns: 1fr; } }
+
+  .rtos-diagram {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    font-family: var(--mono);
+  }
+
+  .rtos-title { font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+
+  .task-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .task-label { font-size: 11px; color: var(--muted); width: 65px; flex-shrink: 0; }
+
+  .task-track { flex: 1; height: 28px; border-radius: 4px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); position: relative; overflow: hidden; }
+
+  .task-fill {
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .task-isr { background: rgba(248,113,113,0.25); color: var(--red); border-right: 2px solid var(--red); }
+  .task-high { background: rgba(79,195,247,0.2); color: var(--accent); border-right: 2px solid var(--accent); }
+  .task-low { background: rgba(52,211,153,0.15); color: var(--accent3); border-right: 2px solid var(--accent3); }
+  .task-init { background: rgba(167,139,250,0.15); color: var(--accent2); border-right: 2px solid var(--accent2); }
+
+  .shared-var {
+    margin-top: 1rem;
+    padding: 10px 14px;
+    background: rgba(251,191,36,0.08);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 6px;
+    font-size: 11px;
+    color: var(--warm);
+  }
+
+  .rtos-points { display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+
+  .rtos-point {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .rp-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .rp-text strong { display: block; font-size: 13px; color: var(--text); margin-bottom: 2px; font-weight: 500; }
+  .rp-text span { font-size: 12px; color: var(--muted); font-weight: 300; }
+
+  /* ─── EXPERIENCE TIMELINE ─── */
+  .timeline { position: relative; padding-left: 2rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tl-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .tl-dot {
+    position: absolute;
+    left: -2.375rem;
+    top: 6px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 3px rgba(79,195,247,0.15);
+  }
+
+  .tl-period {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .tl-role {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .tl-company {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .tl-bullets li {
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    font-weight: 300;
+  }
+
+  .tl-bullets li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  /* ─── PROJECTS ─── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-4px);
+  }
+
+  .project-visual {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-body { padding: 1.5rem; }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
+
+  .ptag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    border: 1px solid rgba(79,195,247,0.25);
+    color: var(--accent);
+  }
+
+  .project-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .skill-name { font-size: 13px; color: var(--text); font-weight: 400; }
+
+  .skill-bar-wrap { flex: 1; margin: 0 12px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
+
+  .skill-bar {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 0;
+  }
+
+  .skill-bar.animate { width: var(--w); }
+
+  .skill-pct { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* ─── CONTACT ─── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 680px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .contact-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+
+  .contact-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .contact-label { font-size: 12px; color: var(--muted); margin-bottom: 2px; font-family: var(--mono); }
+  .contact-value { font-size: 14px; color: var(--text); font-weight: 500; }
+
+  .contact-note {
+    background: linear-gradient(135deg, rgba(79,195,247,0.08), rgba(167,139,250,0.08));
+    border: 1px solid rgba(79,195,247,0.15);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .contact-note h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .contact-note p { font-size: 14px; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 1.25rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-left { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .footer-right { font-size: 12px; color: var(--muted); }
+  .footer-right span { color: var(--accent); }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .revealed { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero-stats { gap: 1.5rem; }
+    footer { padding: 1.5rem 1.25rem; }
+  }
+
+  /* ─── AI BADGE ─── */
+  .ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(167,139,250,0.12), rgba(79,195,247,0.08));
+    border: 1px solid rgba(167,139,250,0.25);
+    border-radius: 10px;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 3rem;
+    font-size: 14px;
+    color: var(--accent2);
+    font-weight: 400;
+  }
+
+  .ai-badge strong { color: var(--text); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">CPM.dev</div>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:chaitramadarakhandi2001@gmail.com" class="btn btn-primary" style="padding:0.5rem 1.25rem; font-size:13px;">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Available for Embedded Engineer roles · Bangalore
+    </div>
+    <h1 class="hero-name">Chaitra<br/><em>Madarakhandi</em></h1>
+    <div class="hero-title">AUTOMOTIVE SOFTWARE ENGINEER · RTOS · AI-ENABLED</div>
+    <p class="hero-desc">
+      Building <strong>safety-critical embedded systems</strong> that automotive lives depend on — from RTOS concurrency validation and static analysis to AUTOSAR architecture. Now bridging that with <strong>AI/ML</strong> to engineer the next generation of intelligent vehicles.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:chaitramadarakhandi2001@gmail.com" class="btn btn-primary">Get in Touch</a>
+      <a href="https://linkedin.com/in/chaitramadarakhandi" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">25+</div>
+        <div class="stat-label">ECU Projects</div>
+      </div>
+      <div>
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Critical Bugs Found</div>
+      </div>
+      <div>
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Issues Resolved</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="reveal">
+    <div class="section-eyebrow">What I Do</div>
+    <h2 class="section-title">Core Expertise</h2>
+    <p class="section-sub">Specialized in the intersection of embedded safety, real-time systems, and emerging AI capabilities.</p>
+  </div>
+  <div class="expertise-grid">
+    <div class="expertise-card reveal" style="--card-color: #f87171;">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">RTOS & Concurrency Analysis</div>
+      <div class="card-desc">Deep expertise in RTOS shared-variable analysis — validating task/ISR interactions, preemption mechanisms, race condition detection, and multitasking safety across priority-based schedulers.</div>
+      <div class="tag-list">
+        <span class="tag">Preemption</span>
+        <span class="tag">Race Conditions</span>
+        <span class="tag">ISR Analysis</span>
+        <span class="tag">Multitasking</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal" style="--card-color: #4fc3f7;">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">Static Code Analysis</div>
+      <div class="card-desc">Expert-level Polyspace Bug Finder & Code Prover for automotive ECU software. Identified 40+ high-risk runtime errors across 25+ projects. MISRA C compliance and ISO 26262 functional safety support.</div>
+      <div class="tag-list">
+        <span class="tag">Polyspace</span>
+        <span class="tag">MISRA C</span>
+        <span class="tag">ISO 26262</span>
+        <span class="tag">ASIL</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal" style="--card-color: #34d399;">
+      <div class="card-icon">🔌</div>
+      <div class="card-title">Embedded Protocols</div>
+      <div class="card-desc">Hands-on with UART, SPI, and I2C communication protocols for ECU peripheral integration, device driver analysis, and bus-level embedded C development in automotive contexts.</div>
+      <div class="tag-list">
+        <span class="tag">UART</span>
+        <span class="tag">SPI</span>
+        <span class="tag">I2C</span>
+        <span class="tag">Device Drivers</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal" style="--card-color: #a78bfa;">
+      <div class="card-icon">🏗️</div>
+      <div class="card-title">AUTOSAR Classic</div>
+      <div class="card-desc">Designed and implemented SWCs, configured ports/interfaces, and validated inter-SWC data exchange using Sender-Receiver and Client-Server communication on the AUTOSAR Classic platform.</div>
+      <div class="tag-list">
+        <span class="tag">AUTOSAR RTE</span>
+        <span class="tag">SWCs</span>
+        <span class="tag">S/R Comm</span>
+        <span class="tag">C/S Comm</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal" style="--card-color: #fbbf24;">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">AI-Enabled Engineering</div>
+      <div class="card-desc">Pursuing Generative AI & ML certification from IIT Delhi. Applying Computer Vision and Deep Learning to automotive safety: lane detection, obstacle recognition, driver drowsiness detection.</div>
+      <div class="tag-list">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">Python</span>
+        <span class="tag">ADAS</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal" style="--card-color: #34d399;">
+      <div class="card-icon">🛡️</div>
+      <div class="card-title">Functional Safety</div>
+      <div class="card-desc">ISO 26262 awareness and ASIL-oriented development support through static analysis artifacts. Prepared safety case documentation and collaborated with teams on safety goal traceability.</div>
+      <div class="tag-list">
+        <span class="tag">ISO 26262</span>
+        <span class="tag">ASIL-B/C</span>
+        <span class="tag">Safety Cases</span>
+        <span class="tag">Traceability</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RTOS Visual -->
+  <div class="rtos-section reveal" style="margin-top: 3rem;">
+    <div class="section-eyebrow" style="margin-bottom:1rem;">Deep Dive</div>
+    <h3 style="font-family: var(--serif); font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text);">RTOS Concurrency — How I Validate It</h3>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:1.75rem; font-weight:300;">Using Polyspace to catch what runtime testing often misses — the non-deterministic concurrency bugs.</p>
+    <div class="rtos-grid">
+      <div class="rtos-diagram">
+        <div class="rtos-title">Task / ISR Execution Model</div>
+        <div class="task-bar">
+          <div class="task-label">ISR</div>
+          <div class="task-track"><div class="task-fill task-isr" style="width:100%">Highest priority · preempts all</div></div>
+        </div>
+        <div class="task-bar">
+          <div class="task-label">Task_High</div>
+          <div class="task-track"><div class="task-fill task-high" style="width:75%">High priority task</div></div>
+        </div>
+        <div class="task-bar">
+          <div class="task-label">Task_Low</div>
+          <div class="task-track"><div class="task-fill task-low" style="width:50%">Low priority — interruptible</div></div>
+        </div>
+        <div class="task-bar">
+          <div class="task-label">Init</div>
+          <div class="task-track"><div class="task-fill task-init" style="width:30%">One-time init context</div></div>
+        </div>
+        <div class="shared-var">
+          ⚠ Shared variable accessed across ISR + Task_High + Task_Low<br/>→ Race condition possible if no critical section guard
+        </div>
+      </div>
+      <div class="rtos-points">
+        <div class="rtos-point">
+          <div class="rp-icon" style="background:rgba(248,113,113,0.1);">🔴</div>
+          <div class="rp-text">
+            <strong>Preemption Validation</strong>
+            <span>Verify high-prio tasks correctly interrupt low-prio execution at shared variable access points</span>
+          </div>
+        </div>
+        <div class="rtos-point">
+          <div class="rp-icon" style="background:rgba(251,191,36,0.1);">⚡</div>
+          <div class="rp-text">
+            <strong>Race Condition Detection</strong>
+            <span>Polyspace flags unprotected shared variables accessed concurrently — catching bugs before hardware</span>
+          </div>
+        </div>
+        <div class="rtos-point">
+          <div class="rp-icon" style="background:rgba(79,195,247,0.1);">🔒</div>
+          <div class="rp-text">
+            <strong>Critical Section Analysis</strong>
+            <span>Validate that mutexes / disableInterrupts properly guard non-atomic R/W operations</span>
+          </div>
+        </div>
+        <div class="rtos-point">
+          <div class="rp-icon" style="background:rgba(52,211,153,0.1);">📋</div>
+          <div class="rp-text">
+            <strong>Task/ISR Interaction</strong>
+            <span>Data integrity across ISR context vs task context — non-atomic sequences under interrupt load</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <div class="section-eyebrow">Career</div>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">2+ years building quality into automotive software that lives depend on.</p>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">OCT 2023 — PRESENT</div>
+      <div class="tl-role">Software Engineer — Automotive Domain</div>
+      <div class="tl-company">Bangalore, India</div>
+      <ul class="tl-bullets">
+        <li>RTOS-aware static analysis on 25+ automotive ECU projects using MATLAB Polyspace Bug Finder & Code Prover</li>
+        <li>Shared variable analysis across Task / ISR / Init contexts — detecting race conditions, preemption gaps, and unguarded critical sections</li>
+        <li>Identified 40+ high-risk runtime errors and 100+ medium/low-risk issues; improved software robustness across modules</li>
+        <li>MISRA C compliance enforcement and ISO 26262 functional safety support (ASIL-oriented development)</li>
+        <li>AUTOSAR Classic ACC demo: SWC design, RTE configuration, Sender-Receiver & Client-Server communication validation</li>
+        <li>UART, SPI, I2C protocol analysis in embedded C code reviews and device driver quality assurance</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent2); box-shadow: 0 0 0 3px rgba(167,139,250,0.15);"></div>
+      <div class="tl-period">AUG 2022 — SEP 2022</div>
+      <div class="tl-role">Web Development Intern</div>
+      <div class="tl-company">Springevening Pvt. Ltd.</div>
+      <ul class="tl-bullets">
+        <li>Front-end development using HTML and CSS for client-facing web interfaces</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AI Badge -->
+  <div class="ai-badge reveal" style="margin-top:2.5rem;">
+    <span>🤖</span>
+    <span>Currently pursuing: <strong>Professional Certificate in Generative AI, ML & Intelligent Automation</strong> — IIT Delhi Technology Innovation Hub (11-month program, in progress)</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Key Projects</h2>
+    <p class="section-sub">Real-world automotive and AI engineering work — from safety systems to intelligent perception.</p>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-visual" style="background: linear-gradient(135deg, #0f1a2e, #1a0f2e); font-size:2.5rem;">😴</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">OpenCV</span><span class="ptag">CNN</span><span class="ptag">Deep Learning</span><span class="ptag">ADAS</span>
+        </div>
+        <div class="project-name">Driver Drowsiness Detection</div>
+        <div class="project-desc">Real-time fatigue detection using facial landmark analysis and Eye Aspect Ratio (EAR). CNN classifier distinguishes alert vs drowsy states with audio/visual alert — directly simulating a production ADAS safety feature.</div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-visual" style="background: linear-gradient(135deg, #0a1f0a, #0f1a1a); font-size:2.5rem;">🚗</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">OpenCV</span><span class="ptag">Computer Vision</span><span class="ptag">Autonomous</span>
+        </div>
+        <div class="project-name">Lane & Obstacle Detection</div>
+        <div class="project-desc">Vision pipeline using Canny edge detection and Hough transform for real-time lane marking detection and obstacle recognition — designed for integration into embedded ADAS platforms.</div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-visual" style="background: linear-gradient(135deg, #1a1000, #1a0a00); font-size:2.5rem;">🏎️</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag">Embedded C</span><span class="ptag">UART</span><span class="ptag">I2C</span><span class="ptag">Sensors</span>
+        </div>
+        <div class="project-name">Advanced Car Safety System</div>
+        <div class="project-desc">Rain-sensing wipers, auto headlight control, and indicator automation using sensor-based inputs. UART and I2C-based peripheral communication for sensor data acquisition and actuator control.</div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-visual" style="background: linear-gradient(135deg, #0a0f1a, #1a0a1a); font-size:2.5rem;">🚀</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag">AUTOSAR</span><span class="ptag">MATLAB</span><span class="ptag">Embedded C</span><span class="ptag">RTE</span>
+        </div>
+        <div class="project-name">AUTOSAR ACC Demo</div>
+        <div class="project-desc">End-to-end Advanced Cruise Control simulation on AUTOSAR Classic. SWC design, RTE configuration, Sender-Receiver and Client-Server communication, and inter-SWC functional validation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-eyebrow">Technical Stack</div>
+    <h2 class="section-title">Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Languages & Protocols</div>
+      <div class="skill-item"><span class="skill-name">C / Embedded C</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:92%"></div></div><span class="skill-pct">Expert</span></div>
+      <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:72%"></div></div><span class="skill-pct">Good</span></div>
+      <div class="skill-item"><span class="skill-name">UART / SPI / I2C</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%"></div></div><span class="skill-pct">Proficient</span></div>
+      <div class="skill-item"><span class="skill-name">Embedded C++</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:65%"></div></div><span class="skill-pct">Good</span></div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">RTOS & Safety</div>
+      <div class="skill-item"><span class="skill-name">MATLAB Polyspace</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:95%"></div></div><span class="skill-pct">Expert</span></div>
+      <div class="skill-item"><span class="skill-name">MISRA C</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:90%"></div></div><span class="skill-pct">Expert</span></div>
+      <div class="skill-item"><span class="skill-name">RTOS Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%"></div></div><span class="skill-pct">Proficient</span></div>
+      <div class="skill-item"><span class="skill-name">ISO 26262</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:70%"></div></div><span class="skill-pct">Good</span></div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">AI / ML (Active Learning)</div>
+      <div class="skill-item"><span class="skill-name">Computer Vision</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:70%"></div></div><span class="skill-pct">Good</span></div>
+      <div class="skill-item"><span class="skill-name">Deep Learning</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:60%"></div></div><span class="skill-pct">Growing</span></div>
+      <div class="skill-item"><span class="skill-name">Generative AI</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:58%"></div></div><span class="skill-pct">Growing</span></div>
+      <div class="skill-item"><span class="skill-name">AUTOSAR</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%"></div></div><span class="skill-pct">Good</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-sub">Open to Embedded Engineer (I & II) roles — especially at Honeywell, Bangalore.</p>
+  </div>
+  <div class="contact-grid reveal">
+    <div style="display:flex; flex-direction:column; gap:1rem;">
+      <a href="mailto:chaitramadarakhandi2001@gmail.com" class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">chaitramadarakhandi2001@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:+916362883766" class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+91 6362 883 766</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/chaitramadarakhandi" target="_blank" class="contact-card">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">linkedin.com/in/chaitramadarakhandi</div>
+        </div>
+      </a>
+      <a class="contact-card" style="cursor:default;">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Bangalore, Karnataka, India</div>
+        </div>
+      </a>
+    </div>
+    <div class="contact-note">
+      <h3>Why hire me?</h3>
+      <p>Most embedded engineers know C and protocols. I go deeper — RTOS concurrency, preemption logic, race condition analysis — the kind of validation that prevents safety recalls. And I'm actively building AI skills on top of that embedded foundation.</p>
+      <p>That combination — deterministic RTOS + intelligent AI — is exactly what next-gen automotive platforms need.</p>
+      <a href="mailto:chaitramadarakhandi2001@gmail.com" class="btn btn-primary">Start Conversation →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2025 Chaitra P. Madarakhandi · Automotive Software Engineer</div>
+  <div class="footer-right">Built to impress · <span>Bangalore, India</span></div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Skill bars animate on reveal
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-bar').forEach(bar => bar.classList.add('animate'));
+        skillObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-group').forEach(el => skillObs.observe(el));
+</script>
+</body>
+</html>
